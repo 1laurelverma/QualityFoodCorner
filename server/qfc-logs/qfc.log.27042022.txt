@@ -1,0 +1,14 @@
+[2022-04-27 00:22:16] localhost GET /api/user/6195f66e996a1cb655a4d4fc 304 - 768.138 ms 
+[2022-04-27 00:22:16] localhost GET /api/user/6195f66e996a1cb655a4d4fc 304 - 522.138 ms 
+[2022-04-27 00:22:16] localhost GET /api/product/61b368c88efea1bc9c23c19e 304 - 788.905 ms 
+[2022-04-27 00:22:17] localhost GET /api/product/619cc8507ec03d2d764e0c9b 304 - 1112.084 ms 
+[2022-04-27 00:22:17] localhost GET /api/product/61b368c88efea1bc9c23c19e 304 - 617.853 ms 
+[2022-04-27 00:22:18] localhost GET /api/product/619cc8507ec03d2d764e0c9b 304 - 737.133 ms 
+[2022-04-27 00:22:18] localhost GET /api/product/61b368c88efea1bc9c23c19e 304 - 1071.807 ms 
+[2022-04-27 00:22:19] localhost GET /api/product/619cc8507ec03d2d764e0c9b 304 - 1049.513 ms 
+[2022-04-27 00:22:19] localhost GET /api/product/61b368c88efea1bc9c23c19e 304 - 837.401 ms 
+[2022-04-27 00:22:20] localhost GET /api/product/619cc8507ec03d2d764e0c9b 304 - 1079.559 ms 
+[2022-04-27 00:22:25] localhost POST /api/create-order 200 - 946.758 ms 
+[2022-04-27 00:22:25] localhost GET /api/get-razorpay-key 200 - 0.926 ms 
+[2022-04-27 00:23:27] localhost POST /api/create-order 200 - 977.298 ms 
+[2022-04-27 00:23:27] localhost GET /api/get-razorpay-key 304 - 1.608 ms 

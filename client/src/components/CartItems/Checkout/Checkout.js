@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Checkout.css";
 import { isAuthenticated } from "./../../../auth/index";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Swal from 'sweetalert2'
 const API = process.env.REACT_APP_BACKEND_API;
 
@@ -10,7 +11,7 @@ const Checkout = (props) => {
 	const navigate = useNavigate()
 
 	const { cartItems, isLoading } = props;
-
+	const [loading, setLoading] = useState(false);
 	const [itemsLength, setItemsLength] = useState(0);
 	const [itemsTotal, setItemsTotal] = useState(0);
 	const [success, setSuccess] = useState('');
@@ -118,6 +119,72 @@ const Checkout = (props) => {
         }
 	}
 
+	function loadRazorpay() {
+		const script = document.createElement("script");
+		script.src = "https://checkout.razorpay.com/v1/checkout.js";
+		script.onerror = () => {
+		  alert("Razorpay SDK failed to load. Are you online?");
+		};
+		script.onload = async () => {
+		  try {
+			setLoading(true);
+			console.log("hello");
+			// console.log(checkoutTotal);
+			// console.log(typeof(checkoutTotal));
+			const amountt = parseInt(checkoutTotal) * 100;
+			// console.log(amountt);
+			// console.log(typeof(amountt));
+			
+			const result = await axios.post(`${API}/create-order`, {
+			  amount: amountt,
+			});
+			console.log("hello bye");
+			const { amount, id: order_id, currency } = result.data;
+			const {
+			  data: { key: razorpayKey },
+			} = await axios.get(`${API}/get-razorpay-key`);
+	
+			const options = {
+			  key: razorpayKey,
+			  amount: amount.toString(),
+			  currency: currency,
+			  name: "example name",
+			  description: "example transaction",
+			  order_id: order_id,
+			  handler: async function (response) {
+				const result = await axios.post(`${API}/pay-order`, {
+				  amount: amount,
+				  razorpayPaymentId: response.razorpay_payment_id,
+				  razorpayOrderId: response.razorpay_order_id,
+				  razorpaySignature: response.razorpay_signature,
+				});
+				alert(result.data.msg);
+				// fetchOrders();
+			  },
+			  prefill: {
+				name: "example name",
+				email: "email@example.com",
+				contact: "111111",
+			  },
+			  notes: {
+				address: "example address",
+			  },
+			  theme: {
+				color: "#80c0f0",
+			  },
+			};
+	
+			setLoading(false);
+			const paymentObject = new window.Razorpay(options);
+			paymentObject.open();
+		  } catch (err) {
+			alert(err);
+			setLoading(false);
+		  }
+		};
+		document.body.appendChild(script);
+	  }
+
 	var gst = Number((itemsTotal * 18) / 100).toFixed(3);
 	var discount = Number((itemsTotal * dV) / 100).toFixed(3);
 	var finaltotal = Number( Number(itemsTotal) + Number(gst) - Number(discount)).toFixed(2);
@@ -166,6 +233,9 @@ const Checkout = (props) => {
 				<div className="checkout">Checkout</div>
 				<div className="checkout-amount">₹{checkoutTotal}</div>
 			</button>
+			<button onClick={loadRazorpay}>
+          	Razorpay
+        	</button>
 		</div>
   	);
 };
