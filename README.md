@@ -94,16 +94,5 @@ npm run build
 ```
 
 ## Project Links
-- Deployed react app (https://hopeful-mccarthy-367b57.netlify.app/)
-- Github (https://github.com/PawanJaiswal08/QualityFoodCorner)
-- Drive video (https://drive.google.com/file/d/1pMU55VAo3sW5httec_dAT9KGdO8yz9zt/view?usp=sharing)
-- Youtube (https://www.youtube.com/watch?v=3L8x3aOyyFY)
-
-## Contributors
-### Group-6
-- Yash Gupta (S20190010197)
-- Pawankumar Jaiswal (S20190010069)
-- Laurel Verma (S20190010109)
-- Rishabh Jha (S20190010150)
-- Vishwesh Dhoble (S20190010191)
-- V. Sai Bhaskar (S20190010188)
+- Deployed react app (https://6487f030e1421e556554f216--superlative-sundae-cf7f70.netlify.app/)
+- Github (https://github.com/1laurelverma/QualityFoodCorner/tree/laurel)
