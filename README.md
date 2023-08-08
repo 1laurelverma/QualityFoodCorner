@@ -34,13 +34,6 @@ npm install
 npm start
 ```
 
-### To run through github
-First of all, clone the repository using 
-```sh
-git clone https://github.com/PawanJaiswal08/QualityFoodCorner.git
-```
-Now navigate to cloned repository and follow the same steps as given for zip file.
-
 ## Packages
 
 QFC is currently extended with the following packages.
